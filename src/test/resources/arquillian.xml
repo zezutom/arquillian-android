@@ -1,0 +1,30 @@
+<arquillian xmlns="http://jboss.org/schema/arquillian"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://jboss.org/schema/arquillian
+        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+	<extension qualifier="selenium-server">
+		<!-- this must be skipped, we run /wd/hub on emulator -->
+		<property name="skip">true</property>
+	</extension>
+
+	<extension qualifier="webdriver">
+		<property name="implementationClass">org.openqa.selenium.android.AndroidDriver</property>
+		<property name="remoteAddress">http://localhost:14444/wd/hub</property>
+	</extension>
+
+	<extension qualifier="android">
+		<property name="home">/Users/tom/Programming/android-sdk-macosx</property>
+		<property name="verbose">true</property>
+		<property name="apiLevel">15</property>
+		<property name="avdName">SnapshotEnabled</property>
+		<property name="emulatorBootupTimeoutInSeconds">180</property>
+	</extension>
+
+	<extension qualifier="android-drone">
+		<property name="verbose">true</property>
+		<property name="androidServerApk">/Users/tom/Programming/android-server-2.21.0.apk</property>
+	</extension>
+
+</arquillian>
